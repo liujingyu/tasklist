@@ -11,6 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Auth::routes();
+
+Route::get('/', 'HomeController@index')->name('home');
+
+Route::get('login/gitlab', 'Auth\LoginController@redirectToProvider')->name('gitlab.request');
+Route::get('login/gitlab/callback', 'Auth\LoginController@handleProviderCallback')->name('gitlab.callback');
